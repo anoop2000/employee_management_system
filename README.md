@@ -1,4 +1,4 @@
-                                           ***** Employee Management System (Symfony + MySQL) ******
+                            ***** Employee Management System (Symfony + MySQL) ******
 
 A production-style Employee Management System built using Symfony, designed to manage employee records with efficient data handling, search capabilities, and scalable backend architecture.
 
@@ -98,6 +98,8 @@ public/
 🔎 Advanced filtering (salary range, date filters)
 ☁️ Deployment (AWS / VPS / Docker) .
 
+
+<img width="1912" height="837" alt="image" src="https://github.com/user-attachments/assets/5095549b-1dd8-4ff0-922e-c86fefd2942d" />
 
 
 
