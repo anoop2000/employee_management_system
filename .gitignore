@@ -18,3 +18,26 @@
 /public/assets/
 /assets/vendor/
 ###< symfony/asset-mapper ###
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Env
+.env
+
+# Node (future use)
+node_modules/
+
+# Build
+/public/build/
+
+# DB dumps
+*.sql

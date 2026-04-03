@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Employee Management{% endblock %}
+
+{% block body %}
+<h2 class="mb-4">Employee Management</h2>
+
+<form method="get" class="row g-3 mb-4">
+    <div class="col-md-4">
+        <input type="text" name="search" value="{{ search }}" class="form-control" placeholder="Search by name/email">
+    </div>
+
+    <div class="col-md-3">
+        <select name="position" class="form-select">
+            <option value="">All Positions</option>
+            <option value="Manager" {{ position == 'Manager' ? 'selected' : '' }}>Manager</option>
+            <option value="Developer" {{ position == 'Developer' ? 'selected' : '' }}>Developer</option>
+            <option value="HR" {{ position == 'HR' ? 'selected' : '' }}>HR</option>
+        </select>
+    </div>
+
+    <div class="col-md-2">
+        <button class="btn btn-primary w-100">Search</button>
+    </div>
+
+    <div class="col-md-3 text-end">
+        <a href="{{ path('app_employee_new') }}" class="btn btn-success">
+            + Add Employee
+        </a>
+    </div>
+</form>
+
+<table class="table table-bordered table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Position</th>
+            <th>Salary</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for employee in employees %}
+        <tr>
+            <td>{{ employee.id }}</td>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.email }}</td>
+            <td>{{ employee.position }}</td>
+            <td>₹{{ employee.salary }}</td>
+            <td>
+                <a href="{{ path('app_employee_show', {'id': employee.id}) }}" class="btn btn-info btn-sm">View</a>
+                <a href="{{ path('app_employee_edit', {'id': employee.id}) }}" class="btn btn-warning btn-sm">Edit</a>
+                {{ include('employee/_delete_form.html.twig') }}
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="6" class="text-center">No records found</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<nav>
+    <ul class="pagination">
+        {% for i in 1..total_pages %}
+            <li class="page-item {{ i == current_page ? 'active' : '' }}">
+                <a class="page-link" href="?page={{ i }}&search={{ search }}&position={{ position }}">
+                    {{ i }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</nav>
+
+{% endblock %}

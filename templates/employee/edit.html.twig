@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h2>Edit Employee</h2>
+
+<div class="card p-4 shadow-sm">
+    {{ include('employee/_form.html.twig', {'button_label': 'Update'}) }}
+</div>
+
+<a href="{{ path('app_employee_index') }}" class="btn btn-secondary mt-3">Back</a>
+
+<div class="mt-2">
+    {{ include('employee/_delete_form.html.twig') }}
+</div>
+{% endblock %}
